@@ -1,2 +1,22 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+int limite = 990; 
+
+for ( int i =1; i <= limite; i++ )
+{
+    if (i % 3 ==0 && i %5==0)
+    {
+        Console.WriteLine(i + " - FooBar");
+    }
+    else if (i%3 ==0)
+    {
+        Console.WriteLine(i + " - Foo"); 
+    }
+    else if (i%5 ==0) 
+    {
+        Console.WriteLine(i + " - Bar");
+    }
+    else
+    {
+        Console.WriteLine(i);
+    }
+}
