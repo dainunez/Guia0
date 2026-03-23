@@ -34,5 +34,10 @@ namespace Guia0
                 }
             }
         }
+
+        public void Ejercicio2()
+        {
+            
+        }
     }
 }
