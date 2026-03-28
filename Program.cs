@@ -14,7 +14,15 @@ namespace Guia0
            //Ejercicio4();
            //Ejercicio5();
            //Ejercicio6();
-           Ejercicio7();
+           //Ejercicio7();
+            //Ejercicio8();
+            //Ejercicio9();
+            //Ejercicio10();
+            //Ejercicio11();
+            //Ejercicio12();
+            //Ejercicio13();
+            //Ejercicio14();
+            Ejercicio15();
         }
         public static void Ejercicio1()
         {
@@ -224,7 +232,200 @@ namespace Guia0
 
         public static void Ejercicio8()
         {
+            Console.WriteLine("Por favor ingrese una fecha en formato dd/mm/aaaa: ");
+            string fecha = Console.ReadLine();
 
+            if(DateTime.TryParse (fecha, out DateTime date))
+            {
+                DateTime hoy = DateTime.Now;
+                TimeSpan diferencia = date - hoy;
+
+                int DiasTotales = Math.Abs(diferencia.Days);
+
+                Console.WriteLine("La diferencia entre la fecha ingresada y el dia de hoy es de " + diferencia + " dias.");
+            }
+            else
+            {
+                Console.WriteLine("Error. Ingrese una fecha valida.");
+            }
+        }
+        public static void Ejercicio9()
+        {
+            Console.WriteLine("Por favor ingrese su nombre: "); 
+            string nombreUsuario = Console.ReadLine();
+
+            if (nombreUsuario == "Daiana")
+            {
+                Console.WriteLine("¡Hola, Daiana!");
+            }
+            else
+            {
+                Console.WriteLine("No te conozco");
+            }
+        }
+
+        public static void Ejercicio10()
+        {
+            Console.WriteLine("Ingrese un solo caracter: ");
+            string entrada = Console.ReadLine();
+
+            char c = char.ToLower(entrada[0]);
+
+            if (c >= 0 && c <=9)
+            {
+                Console.WriteLine("Es una cifra numerica.");
+            }
+            else if (char.IsLetter(c))
+            {
+                if (c=='a' || c=='e'||c=='i'||c=='o'||c=='u')
+                {
+                    Console.WriteLine("Es una vocal");
+                }
+                else
+                {
+                    Console.WriteLine("Es una consonante");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Es un caracter especial");
+            }
+        }
+
+        public static void Ejercicio11()
+        {
+            Console.WriteLine("Ingrese nombre, apellido y edad en cualquier orden: ");
+            string input = Console.ReadLine();
+
+            string [] partes = input.Split(' ');
+
+            string nombre = "";
+            string apellido = "";
+            int edad = 0; 
+
+            foreach (string dato in partes)
+            {
+                if (dato == "") continue; 
+
+                if(int.TryParse(dato, out int num))
+                {
+                    edad = num;
+                }
+                else if (nombre == "")
+                {
+                    nombre = dato;
+                }
+                else 
+                {
+                    apellido = dato;
+                }
+            }
+            Console.WriteLine($"Nombre:{nombre}, Apellido: {apellido}, Edad: {edad}");
+        }
+        public static void Ejercicio12()
+        {
+            bool flag = false;
+            DateTime f1, f2;
+            do
+            {
+                Console.WriteLine("Por favor ingrese una fecha en formato dd/mm/aaaa: ");
+                string fecha1 = Console.ReadLine();
+
+                if (!DateTime.TryParse(fecha1, out f1))
+                {
+                    Console.WriteLine("Error. La fecha 1 es invalida.");
+                }
+                else
+                {
+                    flag = true;
+                }
+
+            } while (!flag);
+
+            bool flag2 = false;
+            do
+            {
+                Console.WriteLine("Por favor ingrese una segunda fecha en formato dd/mm/aaaa: ");
+                string fecha2 = Console.ReadLine();
+
+                if (!DateTime.TryParse(fecha2, out f2))
+                {
+                    Console.WriteLine("Error. La fecha 2 es invalida.");
+                }
+                else
+                {
+                    flag = true;
+                }
+
+            } while (!flag);
+
+            TimeSpan diferencia = f1 - f2;
+
+            int DiasTotales = Math.Abs(diferencia.Days);
+
+            int años = DiasTotales / 365;
+            int restoDias = DiasTotales % 365;
+            int meses = restoDias / 30;
+            int dias = restoDias % 30;
+
+            Console.WriteLine($"La diferencia entre las fechas es de {años} años, {meses} meses y {dias} dias.");
+        }
+
+        public static void Ejercicio13()
+        {
+            Console.WriteLine("Ingrese un numero para calcular su factorial: ");
+            int numero = int.Parse (Console.ReadLine());
+
+            long resultado = 1; 
+
+            for(int i = 1; i <=numero; i++)
+            {
+                resultado *= i; // o resultado = resultado * i;
+            }
+            Console.WriteLine($"El factorial de {numero} es {resultado}");
+
+        }
+
+        public static void Ejercicio14()
+        {
+            Console.WriteLine("Ingrese un numero: ");
+            string numero = Console.ReadLine();
+            if (int.TryParse(numero, out int salida))
+            {
+                for (int i = 1; i <= 10; i++)
+                {
+                    int resultado = salida * i;
+                    Console.WriteLine($"{salida} x {i} = {resultado}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ingrese un numero valido.");
+            }            
+        }
+        public static void Ejercicio15()
+        {
+            string clave = "daiana";
+
+            for (int intento = 1;intento <= 3;intento++)
+            {
+                Console.WriteLine("Ingrese la clave: ");
+                string entrada = Console.ReadLine();
+
+                if (entrada == clave )
+                {
+                    Console.WriteLine("Bienvenido al sistema.");
+                    break;
+                }
+                else if (intento < 3)
+                {
+                    Console.WriteLine("Clave incorrecta. Intente de nuevo.");
+                }
+                else 
+                {
+                    Console.WriteLine("Clave Bloqueada.");
+                }
+            }
         }
     }
 }
