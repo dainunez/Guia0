@@ -1,6 +1,7 @@
 ﻿
 
 using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Guia0
 {
@@ -8,13 +9,13 @@ namespace Guia0
     {
         static void Main(string[] args)
         {
-           // Ejercicio1();
-           // Ejercicio2();
-           // Ejercicio3();
-           //Ejercicio4();
-           //Ejercicio5();
-           //Ejercicio6();
-           //Ejercicio7();
+            // Ejercicio1();
+            // Ejercicio2();
+            // Ejercicio3();
+            //Ejercicio4();
+            //Ejercicio5();
+            //Ejercicio6();
+            //Ejercicio7();
             //Ejercicio8();
             //Ejercicio9();
             //Ejercicio10();
@@ -22,7 +23,12 @@ namespace Guia0
             //Ejercicio12();
             //Ejercicio13();
             //Ejercicio14();
-            Ejercicio15();
+            //Ejercicio15();
+            //Ejercicio16();
+            //Ejercicio17();
+            //Ejercicio18();
+            //Ejercicio19();
+            Ejercicio20();
         }
         public static void Ejercicio1()
         {
@@ -426,6 +432,165 @@ namespace Guia0
                     Console.WriteLine("Clave Bloqueada.");
                 }
             }
+        }
+        public static void Ejercicio16()
+        {
+            bool flag = false;
+            do
+            {
+                Console.WriteLine("Ingrese un numero: ");
+                string numero = Console.ReadLine();
+                if (int.TryParse(numero, out int salida))
+                {
+                    int digitos = Math.Abs(salida).ToString().Length;
+
+                    Console.WriteLine($"La cantidad de digitos del numero {salida} es de {digitos}");
+                    flag = true;                   
+                }
+                else
+                {
+                    Console.WriteLine("Ingrese un valor numerico.");
+                }
+            } while (!flag);
+            
+        }
+        public static void Ejercicio17()
+        {
+            float sueldoMax = 0;
+           string NombreMax = "";
+            int contador = 0;
+
+            do
+            {
+                Console.WriteLine("Ingrese su nombre: ");
+                string nombre = Console.ReadLine();
+
+                Console.WriteLine("Ingrese su sueldo: ");
+                string sueldoActual = Console.ReadLine();
+
+                if (float.TryParse(sueldoActual, out float salida))
+                {
+                    if (salida > sueldoMax)
+                    {
+                        sueldoMax = salida;
+                        NombreMax = nombre;
+                    }
+                    contador++;
+                }
+                else
+                {
+                    Console.WriteLine("Sueldo no valido. Ingrese un valor valido.");
+                }
+            } while (contador < 5);
+            Console.WriteLine($"El sueldo maximo es {sueldoMax} y corresponde a {NombreMax}");
+        }
+        public static void Ejercicio18()
+        {
+            bool flag = false;
+            do
+            {
+                Console.WriteLine("Ingrese un numero decimal: ");
+                string n = Console.ReadLine();
+
+                if (int.TryParse(n, out int salida))
+                {
+                    string binario = Convert.ToString(salida, 2);
+                    string octal = Convert.ToString(salida, 8);
+                    string hexadecimal = Convert.ToString(salida, 16).ToUpper();
+
+                    Console.WriteLine($"El equivalente de {salida} en bianrio es {binario}");
+                    Console.WriteLine($"El equivalente de {salida} en octal es {octal}");
+                    Console.WriteLine($"El equivalente de {salida} en hexadecimal es {hexadecimal}");
+
+                    flag = true;
+                }
+                else
+                {
+                    Console.WriteLine("Error. Ingrese un numero decimal.");
+                }
+
+            } while (!flag);
+            
+        }
+        public static void Ejercicio19()
+        {
+            bool flag = false;
+            do
+            {
+                Console.WriteLine("¿Cuantas palabras desea ingresar?: ");
+                string cantidad = Console.ReadLine();
+
+                if (int.TryParse(cantidad, out int salida))
+                {
+                    string[] palabras = new string[salida];
+
+                    for (int i = 0; i < salida; i++)
+                    {
+                        Console.WriteLine($"Ingrese la palabra {i + 1}: ");
+                        palabras[i] = Console.ReadLine();
+                       
+                    }
+                    foreach (string p in palabras)
+                    {
+                        int caracteres = p.Length;
+                        Console.WriteLine($"Palabra: {p} - Cantidad de caracteres: {caracteres}");
+                    }
+                    flag = true;
+                }
+                else
+                {
+                    Console.WriteLine("Error. Ingrese un valor numerico.");
+                }
+            } while (!flag);
+                      
+        }
+        public static void Ejercicio20()
+        {
+            bool flag = false;
+            do
+            {
+                Console.WriteLine("Ingrese un numero: ");
+                string n= Console.ReadLine();
+
+                if (int.TryParse(n, out int salida) && salida > 0)
+                {
+                    int contador = 0;
+                    for (int i = 0; i < salida; i++)
+                    {
+                        if (EsPrimo (i) ==2)
+                        {
+                            contador++;
+                        }
+                    }
+                    flag = true;
+
+                    long resultado = 1;
+
+                    for (int i = 1; i <= salida; i++)
+                    {
+                        resultado *= i; // o resultado = resultado * i;
+                    }
+
+                    Console.WriteLine($"La cantidad de numeros primos desde el 0 hasta el {salida} es de {contador}");
+                    Console.WriteLine($"El factorial de {salida} es {resultado}");
+                }
+                else
+                {
+                    Console.WriteLine("Ingrese un valor numerico valido.");
+                }
+            } while (!flag);
+            
+        }
+
+        private static int EsPrimo (int numero)
+        {
+            int contadorDivisores = 0;
+            for (int j = 1; j <= numero; j++)
+            {
+                if (numero % j == 0)
+                { contadorDivisores++; }
+            }
+            return contadorDivisores;
         }
     }
 }
